@@ -1,0 +1,854 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PixelKit — Free Online Image Tools</title>
+    <meta
+      name="description"
+      content="Fast, private, mobile-first browser image tools to compress, resize, crop, convert, and enhance photos locally with zero server uploads."
+    />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+
+    <!-- OpenGraph Metadata -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PixelKit — Free Online Image Tools" />
+    <meta
+      property="og:description"
+      content="Compress, resize, crop, convert, and enhance photos right in your browser. 100% private, free, and zero server uploads."
+    />
+    <meta property="og:site_name" content="PixelKit" />
+
+    <!-- Twitter Cards -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="PixelKit — Free Online Image Tools" />
+    <meta
+      name="twitter:description"
+      content="Compress, resize, crop, convert, and enhance photos locally with zero server uploads."
+    />
+
+    <!-- Schema.org WebApplication Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "PixelKit — Free Online Image Tools",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5 Canvas.",
+      "description": "Compress, resize, crop, convert, and enhance photos right in your browser with zero server uploads.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- 3-Zone Header Contract -->
+    <header class="site-header">
+      <div class="header-container">
+        <!-- Zone 1: Wordmark -->
+        <a href="#" class="brand-link" id="brandHomeLink" aria-label="PixelKit Home">
+          <span class="brand-icon">
+            <svg viewBox="0 0 48 48" width="26" height="26" fill="none" aria-hidden="true">
+              <rect width="48" height="48" rx="10" fill="#4f46e5" />
+              <rect x="10" y="10" width="12" height="12" rx="3" fill="#ffffff" />
+              <rect x="26" y="10" width="12" height="12" rx="3" fill="#a5b4fc" />
+              <rect x="10" y="26" width="12" height="12" rx="3" fill="#a5b4fc" />
+              <circle cx="32" cy="32" r="6" fill="#ffffff" />
+            </svg>
+          </span>
+          <span>PixelKit</span>
+        </a>
+
+        <!-- Zone 2: Navigation Links -->
+        <nav class="nav-links" aria-label="Primary Navigation">
+          <a href="#tools" class="nav-link">Tools</a>
+          <a href="#presets" class="nav-link">Presets</a>
+          <a href="#how-it-works" class="nav-link">How It Works</a>
+          <a href="#privacy" class="nav-link">Privacy</a>
+          <a href="#faq" class="nav-link">FAQ</a>
+        </nav>
+
+        <!-- Zone 3: Primary Action -->
+        <div class="header-action">
+          <button class="btn btn-secondary" id="btnUploadHeader" style="height: 38px; padding: 0 14px; font-size: 0.85rem;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="17 8 12 3 7 8" />
+              <line x1="12" y1="3" x2="12" y2="15" />
+            </svg>
+            <span>Select Image</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <!-- Hero Section -->
+      <section class="hero-section" aria-labelledby="hero-title">
+        <h1 class="hero-title" id="hero-title">Free Online Image Tools</h1>
+        <p class="hero-desc">
+          Compress, resize, crop, convert, and enhance your photos right in your browser. Fast, mobile-first, and 100% private with zero server uploads.
+        </p>
+        <div class="hero-trust-bar">
+          <span class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            No Account Needed
+          </span>
+          <span class="trust-separator" aria-hidden="true">·</span>
+          <span class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            100% Client-Side Processing
+          </span>
+          <span class="trust-separator" aria-hidden="true">·</span>
+          <span class="trust-item">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            No Watermarks
+          </span>
+        </div>
+      </section>
+
+      <!-- Upload Zone -->
+      <section class="dropzone-container" aria-label="Image Upload Section">
+        <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload an image. Tap or drag a JPEG, PNG, or WebP file here.">
+          <input
+            type="file"
+            id="imageFileInput"
+            class="file-input-hidden"
+            accept="image/jpeg,image/png,image/webp"
+            aria-label="Choose image file"
+          />
+          <svg class="dropzone-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+            <circle cx="8.5" cy="8.5" r="1.5" />
+            <polyline points="21 15 16 10 5 21" />
+          </svg>
+          <div class="dropzone-title">Tap here to select an image</div>
+          <div class="dropzone-subtitle">or drag and drop a file from your device</div>
+          <div class="dropzone-limits">Supports JPG, PNG, WebP up to 20 MB · Processed privately in your browser</div>
+        </div>
+      </section>
+
+      <!-- Active Image Metadata Bar (Hidden when empty) -->
+      <section class="image-meta-bar" id="imageMetaBar" style="display: none;" aria-label="Loaded Image Information">
+        <div class="image-meta-left">
+          <img id="imageThumbMini" class="image-thumb-mini" alt="Loaded image thumbnail" />
+          <div class="image-details">
+            <div class="image-name" id="imageMetaName">filename.jpg</div>
+            <div class="image-specs">
+              <span id="imageMetaDimensions" class="tabular-nums">0 × 0 px</span>
+              <span aria-hidden="true">·</span>
+              <span id="imageMetaSize" class="tabular-nums">0 KB</span>
+              <span aria-hidden="true">·</span>
+              <span id="imageMetaFormat">JPG</span>
+            </div>
+          </div>
+        </div>
+        <div class="image-meta-right">
+          <button class="btn btn-secondary" id="btnRemoveImage" style="height: 38px; padding: 0 14px; font-size: 0.85rem;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+            <span>Change Image</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Tool Tabs Navigation -->
+      <section class="tool-tabs-container" id="tools" aria-label="Toolkit selection">
+        <div class="tool-tabs" role="tablist">
+          <button class="tool-tab-btn active" id="tabCompress" role="tab" aria-selected="true" aria-controls="panelCompress">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="4 14 10 14 10 20" />
+              <polyline points="20 10 14 10 14 4" />
+              <line x1="14" y1="10" x2="21" y2="3" />
+              <line x1="3" y1="21" x2="10" y2="14" />
+            </svg>
+            <span>Compress</span>
+          </button>
+          <button class="tool-tab-btn" id="tabResize" role="tab" aria-selected="false" aria-controls="panelResize">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="15 3 21 3 21 9" />
+              <polyline points="9 21 3 21 3 15" />
+              <line x1="21" y1="3" x2="14" y2="10" />
+              <line x1="3" y1="21" x2="10" y2="14" />
+            </svg>
+            <span>Resize</span>
+          </button>
+          <button class="tool-tab-btn" id="tabCrop" role="tab" aria-selected="false" aria-controls="panelCrop">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 2v14a2 2 0 0 0 2 2h14" />
+              <path d="M18 22V8a2 2 0 0 0-2-2H2" />
+            </svg>
+            <span>Crop</span>
+          </button>
+          <button class="tool-tab-btn" id="tabConvert" role="tab" aria-selected="false" aria-controls="panelConvert">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="17 1 21 5 17 9" />
+              <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+              <polyline points="7 23 3 19 7 15" />
+              <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+            </svg>
+            <span>Convert</span>
+          </button>
+          <button class="tool-tab-btn" id="tabEnhance" role="tab" aria-selected="false" aria-controls="panelEnhance">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="5" />
+              <line x1="12" y1="1" x2="12" y2="3" />
+              <line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" />
+              <line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </svg>
+            <span>Enhance</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Main Workspace Card -->
+      <section class="workspace-card" aria-label="Tool Controls and Output">
+        <!-- 1. COMPRESS PANEL -->
+        <div class="tool-panel active" id="panelCompress" role="tabpanel" aria-labelledby="tabCompress">
+          <div class="tool-header">
+            <h2 class="tool-title">Image Compressor</h2>
+            <p class="tool-description">Reduce file size for web, email, or forms without noticeable quality loss.</p>
+          </div>
+
+          <div class="control-grid control-grid-2col">
+            <!-- Mode Toggle -->
+            <div class="control-group">
+              <label class="control-label">Compression Mode</label>
+              <div class="segmented-group">
+                <button type="button" class="segment-btn active" id="btnCompressModeQuality">Quality Slider</button>
+                <button type="button" class="segment-btn" id="btnCompressModeTarget">Target File Size</button>
+              </div>
+            </div>
+
+            <!-- Format Selector -->
+            <div class="control-group">
+              <label for="compressFormatSelect" class="control-label">Output Format</label>
+              <select id="compressFormatSelect" class="form-select">
+                <option value="image/jpeg">JPEG (Best for photos)</option>
+                <option value="image/webp">WebP (Modern, high compression)</option>
+                <option value="image/png">PNG (Lossless, graphics)</option>
+              </select>
+            </div>
+
+            <!-- Quality Slider (Mode: Quality) -->
+            <div class="control-group" id="compressQualityContainer">
+              <div class="control-label">
+                <span>Quality Level</span>
+                <span class="slider-val-badge tabular-nums" id="compressQualityVal">80%</span>
+              </div>
+              <div class="slider-container">
+                <input
+                  type="range"
+                  id="compressQualitySlider"
+                  class="range-slider"
+                  min="5"
+                  max="100"
+                  step="1"
+                  value="80"
+                  aria-label="Compression quality slider"
+                />
+              </div>
+              <span class="control-hint">80% gives great visual fidelity with significant size reduction.</span>
+            </div>
+
+            <!-- Target Size Mode (Mode: Target) -->
+            <div class="control-group" id="compressTargetContainer" style="display: none;">
+              <label for="compressTargetInput" class="control-label">Target File Size (KB)</label>
+              <div style="display: flex; gap: 8px;">
+                <input
+                  type="number"
+                  id="compressTargetInput"
+                  class="form-input"
+                  min="10"
+                  max="10000"
+                  value="200"
+                  placeholder="e.g. 200"
+                />
+              </div>
+              <div class="segmented-group" style="margin-top: 6px;">
+                <button type="button" class="segment-btn quick-target-btn" data-kb="50">50 KB</button>
+                <button type="button" class="segment-btn quick-target-btn" data-kb="100">100 KB</button>
+                <button type="button" class="segment-btn quick-target-btn active" data-kb="200">200 KB</button>
+                <button type="button" class="segment-btn quick-target-btn" data-kb="500">500 KB</button>
+              </div>
+              <span class="control-hint">Common for online passport or exam application portals.</span>
+            </div>
+
+            <!-- Max Dimension Limiter -->
+            <div class="control-group">
+              <label for="compressMaxDimSelect" class="control-label">Max Dimensions (Optional)</label>
+              <select id="compressMaxDimSelect" class="form-select">
+                <option value="none">Original Resolution</option>
+                <option value="1920">Max 1920px (Full HD)</option>
+                <option value="1280">Max 1280px (Web standard)</option>
+                <option value="800">Max 800px (Mobile / Email)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnRunCompress">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Compress Image</span>
+            </button>
+            <button class="btn btn-secondary" id="btnResetCompress">Reset</button>
+          </div>
+
+          <!-- Compress Result -->
+          <div class="result-card" id="compressResultCard" style="display: none;">
+            <div class="result-header">
+              <div class="result-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Compression Ready</span>
+              </div>
+              <div class="size-comparison">
+                <span class="original-size tabular-nums" id="compressOriginalSize">0 KB</span>
+                <span>→</span>
+                <span class="final-size tabular-nums" id="compressFinalSize">0 KB</span>
+                <span class="savings-tag positive" id="compressSavingsBadge">-0%</span>
+              </div>
+            </div>
+            <div class="result-note" id="compressResultNote">Ready for download.</div>
+            <div>
+              <button class="btn btn-primary" id="btnDownloadCompress">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Download Compressed Image</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. RESIZE PANEL -->
+        <div class="tool-panel" id="panelResize" role="tabpanel" aria-labelledby="tabResize">
+          <div class="tool-header">
+            <h2 class="tool-title">Image Resizer</h2>
+            <p class="tool-description">Change image width and height with aspect ratio lock or custom dimensions.</p>
+          </div>
+
+          <div class="control-grid control-grid-2col">
+            <div class="control-group">
+              <label for="resizeWidthInput" class="control-label">Width (px)</label>
+              <input type="number" id="resizeWidthInput" class="form-input tabular-nums" min="1" max="8192" placeholder="Width" />
+            </div>
+
+            <div class="control-group">
+              <label for="resizeHeightInput" class="control-label">Height (px)</label>
+              <input type="number" id="resizeHeightInput" class="form-input tabular-nums" min="1" max="8192" placeholder="Height" />
+            </div>
+
+            <!-- Aspect Ratio Lock Toggle -->
+            <div class="control-group" style="grid-column: 1 / -1;">
+              <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+                <button type="button" class="btn btn-secondary" id="btnToggleRatioLock" style="height: 38px;">
+                  <svg width="16" height="16" id="ratioLockIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                  </svg>
+                  <span id="ratioLockText">Aspect Ratio: Locked</span>
+                </button>
+                <div class="segmented-group">
+                  <button type="button" class="segment-btn resize-percent-btn" data-percent="25">25%</button>
+                  <button type="button" class="segment-btn resize-percent-btn" data-percent="50">50%</button>
+                  <button type="button" class="segment-btn resize-percent-btn" data-percent="75">75%</button>
+                  <button type="button" class="segment-btn resize-percent-btn active" data-percent="100">100%</button>
+                  <button type="button" class="segment-btn resize-percent-btn" data-percent="150">150%</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Presets for resizing -->
+            <div class="control-group" style="grid-column: 1 / -1;">
+              <label class="control-label">Quick Dimension Presets</label>
+              <div class="segmented-group">
+                <button type="button" class="segment-btn resize-preset-btn" data-w="1080" data-h="1080">1080 × 1080 (Square)</button>
+                <button type="button" class="segment-btn resize-preset-btn" data-w="1080" data-h="1920">1080 × 1920 (Story/Reel)</button>
+                <button type="button" class="segment-btn resize-preset-btn" data-w="1280" data-h="720">1280 × 720 (YouTube)</button>
+                <button type="button" class="segment-btn resize-preset-btn" data-w="1920" data-h="1080">1920 × 1080 (Full HD)</button>
+                <button type="button" class="segment-btn resize-preset-btn" data-w="600" data-h="600">600 × 600 (Passport ID)</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnRunResize">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="15 3 21 3 21 9" />
+                <polyline points="9 21 3 21 3 15" />
+                <line x1="21" y1="3" x2="14" y2="10" />
+                <line x1="3" y1="21" x2="10" y2="14" />
+              </svg>
+              <span>Apply Resize</span>
+            </button>
+            <button class="btn btn-secondary" id="btnResetResize">Reset Dimensions</button>
+          </div>
+
+          <!-- Resize Result -->
+          <div class="result-card" id="resizeResultCard" style="display: none;">
+            <div class="result-header">
+              <div class="result-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Resized Image Ready</span>
+              </div>
+              <div class="tabular-nums font-semibold" id="resizeOutputDimensions">0 × 0 px</div>
+            </div>
+            <div class="result-note" id="resizeResultNote">Output generated.</div>
+            <div>
+              <button class="btn btn-primary" id="btnDownloadResize">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Download Resized Image</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. CROP PANEL -->
+        <div class="tool-panel" id="panelCrop" role="tabpanel" aria-labelledby="tabCrop">
+          <div class="tool-header">
+            <h2 class="tool-title">Image Cropper & Aspect Ratio Adjuster</h2>
+            <p class="tool-description">Touch-friendly crop handles and presets to frame your image accurately.</p>
+          </div>
+
+          <!-- Ratio Presets -->
+          <div class="control-group" style="margin-bottom: 16px;">
+            <label class="control-label">Aspect Ratio</label>
+            <div class="segmented-group">
+              <button type="button" class="segment-btn crop-ratio-btn active" data-ratio="free">Free</button>
+              <button type="button" class="segment-btn crop-ratio-btn" data-ratio="1:1">1:1 Square</button>
+              <button type="button" class="segment-btn crop-ratio-btn" data-ratio="4:5">4:5 Portrait</button>
+              <button type="button" class="segment-btn crop-ratio-btn" data-ratio="4:3">4:3 Standard</button>
+              <button type="button" class="segment-btn crop-ratio-btn" data-ratio="16:9">16:9 Wide</button>
+              <button type="button" class="segment-btn crop-ratio-btn" data-ratio="9:16">9:16 Story</button>
+            </div>
+          </div>
+
+          <!-- Interactive Crop Area -->
+          <div class="crop-workspace-container" id="cropWorkspace">
+            <canvas id="cropCanvas" class="crop-canvas-layer"></canvas>
+            <div id="cropBox" class="crop-box-overlay">
+              <div class="crop-handle crop-handle-nw" data-handle="nw"></div>
+              <div class="crop-handle crop-handle-ne" data-handle="ne"></div>
+              <div class="crop-handle crop-handle-se" data-handle="se"></div>
+              <div class="crop-handle crop-handle-sw" data-handle="sw"></div>
+            </div>
+          </div>
+
+          <!-- Mobile Touch Nudge Controls -->
+          <div class="crop-nudge-bar" aria-label="Micro-positioning nudge controls">
+            <span style="font-size: 0.8rem; color: var(--text-muted); width: 100%; text-align: center;">Touch & Drag the box, or tap arrows for micro-precision:</span>
+            <button type="button" class="nudge-btn" id="btnNudgeUp" aria-label="Nudge crop area up">▲</button>
+            <button type="button" class="nudge-btn" id="btnNudgeDown" aria-label="Nudge crop area down">▼</button>
+            <button type="button" class="nudge-btn" id="btnNudgeLeft" aria-label="Nudge crop area left">◀</button>
+            <button type="button" class="nudge-btn" id="btnNudgeRight" aria-label="Nudge crop area right">▶</button>
+            <button type="button" class="btn btn-secondary" id="btnCenterCrop" style="height: 44px; font-size: 0.85rem;">Center Crop</button>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnRunCrop">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M6 2v14a2 2 0 0 0 2 2h14" />
+                <path d="M18 22V8a2 2 0 0 0-2-2H2" />
+              </svg>
+              <span>Crop & Save</span>
+            </button>
+            <button class="btn btn-secondary" id="btnResetCrop">Reset Crop</button>
+          </div>
+
+          <!-- Crop Result -->
+          <div class="result-card" id="cropResultCard" style="display: none;">
+            <div class="result-header">
+              <div class="result-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Cropped Image Ready</span>
+              </div>
+              <div class="tabular-nums font-semibold" id="cropOutputDimensions">0 × 0 px</div>
+            </div>
+            <div>
+              <button class="btn btn-primary" id="btnDownloadCrop">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Download Cropped Image</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. CONVERT PANEL -->
+        <div class="tool-panel" id="panelConvert" role="tabpanel" aria-labelledby="tabConvert">
+          <div class="tool-header">
+            <h2 class="tool-title">Image Format Converter</h2>
+            <p class="tool-description">Convert between WebP, JPEG, and PNG with full transparency management.</p>
+          </div>
+
+          <div class="control-grid control-grid-2col">
+            <div class="control-group">
+              <label for="convertTargetFormatSelect" class="control-label">Target Format</label>
+              <select id="convertTargetFormatSelect" class="form-select">
+                <option value="image/webp">WebP (Modern, superior compression)</option>
+                <option value="image/jpeg">JPEG (Universal compatibility)</option>
+                <option value="image/png">PNG (Lossless, alpha transparency)</option>
+              </select>
+            </div>
+
+            <!-- Transparency Background Color (When Converting to JPEG) -->
+            <div class="control-group" id="convertBgColorGroup" style="display: none;">
+              <label for="convertBgColorInput" class="control-label">
+                <span>Background Color (JPEG has no transparency)</span>
+              </label>
+              <div style="display: flex; gap: 8px; align-items: center;">
+                <input type="color" id="convertBgColorInput" value="#ffffff" style="width: 44px; height: 44px; padding: 2px; border: 1px solid var(--border-color); border-radius: var(--radius-sm); cursor: pointer;" />
+                <span class="tabular-nums" id="convertBgColorHex" style="font-size: 0.9rem; color: var(--text-secondary);">#ffffff</span>
+              </div>
+              <span class="control-hint">Transparent areas in your PNG will be filled with this color.</span>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnRunConvert">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="17 1 21 5 17 9" />
+                <path d="M3 11V9a4 4 0 0 1 4-4h14" />
+                <polyline points="7 23 3 19 7 15" />
+                <path d="M21 13v2a4 4 0 0 1-4 4H3" />
+              </svg>
+              <span>Convert Image</span>
+            </button>
+          </div>
+
+          <!-- Convert Result -->
+          <div class="result-card" id="convertResultCard" style="display: none;">
+            <div class="result-header">
+              <div class="result-title">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2.5" aria-hidden="true">
+                  <polyline points="20 6 9 17 4 12" />
+                </svg>
+                <span>Conversion Complete</span>
+              </div>
+              <div class="tabular-nums font-semibold" id="convertOutputSpecs">WEBP · 0 KB</div>
+            </div>
+            <div>
+              <button class="btn btn-primary" id="btnDownloadConvert">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Download Converted File</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. ENHANCE PANEL -->
+        <div class="tool-panel" id="panelEnhance" role="tabpanel" aria-labelledby="tabEnhance">
+          <div class="tool-header">
+            <h2 class="tool-title">Photo Enhancer</h2>
+            <p class="tool-description">Adjust brightness, contrast, saturation, and sharpness in real-time.</p>
+          </div>
+
+          <!-- Live Preview Canvas -->
+          <div class="enhancer-preview-box">
+            <canvas id="enhancerPreviewCanvas" class="enhancer-preview-canvas"></canvas>
+          </div>
+
+          <!-- Quick Preset Buttons -->
+          <div class="control-group" style="margin-bottom: 20px;">
+            <label class="control-label">Quick Color Styles</label>
+            <div class="segmented-group">
+              <button type="button" class="segment-btn enhance-preset-btn" data-preset="auto">Auto Contrast</button>
+              <button type="button" class="segment-btn enhance-preset-btn" data-preset="vivid">Vivid Color</button>
+              <button type="button" class="segment-btn enhance-preset-btn" data-preset="warm">Warm Sunlight</button>
+              <button type="button" class="segment-btn enhance-preset-btn" data-preset="bw">Monochrome B&W</button>
+              <button type="button" class="segment-btn enhance-preset-btn" data-preset="crisp">Crisp Detail</button>
+            </div>
+          </div>
+
+          <div class="control-grid control-grid-2col">
+            <!-- Brightness -->
+            <div class="control-group">
+              <div class="control-label">
+                <span>Brightness</span>
+                <span class="slider-val-badge tabular-nums" id="enhanceBrightnessVal">0</span>
+              </div>
+              <div class="slider-container">
+                <input type="range" id="enhanceBrightnessSlider" class="range-slider" min="-100" max="100" step="1" value="0" />
+              </div>
+            </div>
+
+            <!-- Contrast -->
+            <div class="control-group">
+              <div class="control-label">
+                <span>Contrast</span>
+                <span class="slider-val-badge tabular-nums" id="enhanceContrastVal">0</span>
+              </div>
+              <div class="slider-container">
+                <input type="range" id="enhanceContrastSlider" class="range-slider" min="-100" max="100" step="1" value="0" />
+              </div>
+            </div>
+
+            <!-- Saturation -->
+            <div class="control-group">
+              <div class="control-label">
+                <span>Saturation</span>
+                <span class="slider-val-badge tabular-nums" id="enhanceSaturationVal">0</span>
+              </div>
+              <div class="slider-container">
+                <input type="range" id="enhanceSaturationSlider" class="range-slider" min="-100" max="100" step="1" value="0" />
+              </div>
+            </div>
+
+            <!-- Sharpness -->
+            <div class="control-group">
+              <div class="control-label">
+                <span>Sharpness (Detail Kernel)</span>
+                <span class="slider-val-badge tabular-nums" id="enhanceSharpnessVal">0%</span>
+              </div>
+              <div class="slider-container">
+                <input type="range" id="enhanceSharpnessSlider" class="range-slider" min="0" max="100" step="1" value="0" />
+              </div>
+            </div>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" id="btnRunEnhance">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              <span>Download Enhanced Photo</span>
+            </button>
+            <button class="btn btn-secondary" id="btnResetEnhance">Reset Adjustments</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Presets Showcase Section -->
+      <section class="content-section" id="presets" aria-labelledby="presets-heading">
+        <h2 class="section-heading" id="presets-heading">Popular Dimensions & Formats</h2>
+        <p class="section-intro">One-tap dimensions for social media, document applications, and web publishing.</p>
+        <div class="info-cards-grid">
+          <div class="info-card">
+            <div class="info-card-title">1:1 Square Profile</div>
+            <div class="tabular-nums" style="font-weight: 700; color: var(--brand-primary); margin-bottom: 6px;">1080 × 1080 px</div>
+            <p class="info-card-desc">Standard square aspect ratio ideal for Instagram grid posts, avatars, and profile pictures.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">9:16 Vertical Story / Reel</div>
+            <div class="tabular-nums" style="font-weight: 700; color: var(--brand-primary); margin-bottom: 6px;">1080 × 1920 px</div>
+            <p class="info-card-desc">Full-screen vertical format for TikTok, Instagram Stories, YouTube Shorts, and WhatsApp Status.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">16:9 YouTube Thumbnail</div>
+            <div class="tabular-nums" style="font-weight: 700; color: var(--brand-primary); margin-bottom: 6px;">1280 × 720 px</div>
+            <p class="info-card-desc">Standard widescreen banner for video previews, blog hero images, and slide presentations.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Government & Passport Photo</div>
+            <div class="tabular-nums" style="font-weight: 700; color: var(--brand-primary); margin-bottom: 6px;">600 × 600 px · &lt; 240 KB</div>
+            <p class="info-card-desc">Complies with common digital ID, visa, and passport portal dimension and file size guidelines.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Modern WebP Export</div>
+            <div class="tabular-nums" style="font-weight: 700; color: var(--brand-primary); margin-bottom: 6px;">25–35% Smaller</div>
+            <p class="info-card-desc">Superior compression with full transparency support, endorsed for modern Core Web Vitals speed.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Email & Newsletter Banner</div>
+            <div class="tabular-nums" style="font-weight: 700; color: var(--brand-primary); margin-bottom: 6px;">600 × 300 px</div>
+            <p class="info-card-desc">Lightweight header dimensions that render cleanly across mobile Gmail, Outlook, and Apple Mail.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Non-intrusive Future Advertising Slot -->
+      <aside class="ad-slot-container" aria-label="Sponsorship Area">
+        <div class="ad-label">Advertisement Space</div>
+        <div class="ad-placeholder-text">Clean, non-intrusive sponsor space reserved for verified partners. Core editing tools remain 100% free forever.</div>
+      </aside>
+
+      <!-- How It Works Section -->
+      <section class="content-section" id="how-it-works" aria-labelledby="how-it-works-heading">
+        <h2 class="section-heading" id="how-it-works-heading">How PixelKit Works</h2>
+        <p class="section-intro">PixelKit harnesses standard browser APIs to edit images directly on your device without any backend servers.</p>
+        <div class="info-cards-grid">
+          <div class="info-card">
+            <svg class="info-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+            <div class="info-card-title">1. Local Decoding</div>
+            <p class="info-card-desc">When you pick a file, your browser decodes the image bytes into a local HTML5 canvas. The image never leaves your device.</p>
+          </div>
+          <div class="info-card">
+            <svg class="info-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <polyline points="23 6 13.5 15.5 8.5 10.5 1 18" />
+              <polyline points="17 6 23 6 23 12" />
+            </svg>
+            <div class="info-card-title">2. Hardware Acceleration</div>
+            <p class="info-card-desc">Compression, bicubic resampling, and pixel adjustments run through your phone or computer's GPU canvas pipeline for instant results.</p>
+          </div>
+          <div class="info-card">
+            <svg class="info-card-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            <div class="info-card-title">3. Instant Direct Download</div>
+            <p class="info-card-desc">Your final image is packaged into a local Blob URL and downloaded directly to your phone's gallery or computer downloads.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Privacy Section -->
+      <section class="content-section" id="privacy" aria-labelledby="privacy-heading">
+        <h2 class="section-heading" id="privacy-heading">Zero-Upload Privacy Policy</h2>
+        <p class="section-intro">
+          Traditional online image tools upload your personal photos to their cloud servers, exposing sensitive family pictures, documents, and IDs to data breaches.
+        </p>
+        <div class="info-cards-grid">
+          <div class="info-card">
+            <div class="info-card-title">No Server Uploads</div>
+            <p class="info-card-desc">PixelKit has no backend server or cloud database. 100% of image manipulation happens locally in your browser memory.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">No Tracking or AI Training</div>
+            <p class="info-card-desc">We never inspect, store, or feed your photos to AI training sets. When you close the browser tab, your image data is wiped from RAM.</p>
+          </div>
+          <div class="info-card">
+            <div class="info-card-title">Safe Memory Management</div>
+            <p class="info-card-desc">Memory thresholds are strictly guarded at 20 MB and 8192px to prevent budget mobile devices from crashing during processing.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ Section -->
+      <section class="content-section" id="faq" aria-labelledby="faq-heading">
+        <h2 class="section-heading" id="faq-heading">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Is PixelKit really free to use?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              Yes. PixelKit runs entirely in your browser using free, native web standards. Because we do not run expensive server-side image processing clusters, there are no subscriptions, credits, or paywalls.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Can I use PixelKit on my Android phone?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              Yes! PixelKit is built mobile-first. Tapping the upload box opens your phone's photo gallery or camera roll directly, and large 44px+ touch targets and directional nudge buttons ensure comfortable one-handed mobile editing.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>Why did my PNG file not get smaller with the compression slider?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              PNG is a lossless image format. In browser canvas implementations, the quality parameter applies to lossy formats like WebP and JPEG. If you need substantial file size reduction, convert to WebP or JPEG.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>What is the maximum file size supported?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              PixelKit safely supports files up to 20 MB and up to 8192×8192 pixels. This prevents low-RAM mobile devices from running out of memory.
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false">
+              <span>How do I reach a specific file size like 100 KB for passport applications?</span>
+              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9" />
+              </svg>
+            </button>
+            <div class="faq-answer">
+              In the Compressor tool, switch mode to "Target File Size", enter your desired size in KB (e.g. 100), and click Compress. PixelKit runs a bounded search to dial in the optimal quality and resolution.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <strong>PixelKit</strong> — Free Online Image Tools. Simple, Fast, Private.
+          <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+            Deployed statically on Cloudflare Pages Free. Zero backend dependencies.
+          </div>
+        </div>
+        <div class="footer-links">
+          <a href="#privacy" class="footer-link">Privacy</a>
+          <a href="#how-it-works" class="footer-link">Architecture</a>
+          <a href="#faq" class="footer-link">FAQ</a>
+          <a href="mailto:mn2230287@gmail.com?subject=PixelKit%20Feedback" class="footer-link">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Toast Notification Element -->
+    <div id="toastNotice" class="toast-notice" role="status" aria-live="polite"></div>
+
+    <!-- Application Script Entry -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
